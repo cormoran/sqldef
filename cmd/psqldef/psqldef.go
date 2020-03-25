@@ -5,12 +5,12 @@ import (
 	"log"
 	"os"
 
+	"github.com/cormoran/sqldef"
+	"github.com/cormoran/sqldef/adapter"
+	"github.com/cormoran/sqldef/adapter/postgres"
+	"github.com/cormoran/sqldef/schema"
 	"github.com/howeyc/gopass"
 	"github.com/jessevdk/go-flags"
-	"github.com/k0kubun/sqldef"
-	"github.com/k0kubun/sqldef/adapter"
-	"github.com/k0kubun/sqldef/adapter/postgres"
-	"github.com/k0kubun/sqldef/schema"
 )
 
 // Return parsed options and schema filename

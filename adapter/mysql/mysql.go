@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
+	"github.com/cormoran/sqldef/adapter"
 	driver "github.com/go-sql-driver/mysql"
-	"github.com/k0kubun/sqldef/adapter"
 )
 
 type MysqlDatabase struct {

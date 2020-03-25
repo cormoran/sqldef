@@ -22,7 +22,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/k0kubun/sqldef/sqlparser/dependency/querypb"
+	"github.com/cormoran/sqldef/sqlparser/dependency/querypb"
 )
 
 const (

@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/k0kubun/sqldef/sqlparser"
+	"github.com/cormoran/sqldef/sqlparser"
 )
 
 // Convert back `type BoolVal bool`

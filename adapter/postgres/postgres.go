@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/k0kubun/sqldef/adapter"
+	"github.com/cormoran/sqldef/adapter"
 	_ "github.com/lib/pq"
 )
 

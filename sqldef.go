@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/k0kubun/sqldef/adapter"
-	"github.com/k0kubun/sqldef/schema"
+	"github.com/cormoran/sqldef/adapter"
+	"github.com/cormoran/sqldef/schema"
 )
 
 type Options struct {
