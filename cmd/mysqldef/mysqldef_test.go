@@ -673,6 +673,30 @@ func TestMysqldefDefaultValue(t *testing.T) {
 	assertApplyOutput(t, createTable, nothingModified)
 }
 
+func TestMysqldefChangeDefaultValue(t *testing.T) {
+	resetTestDatabase()
+
+	createTable := stripHeredoc(`
+		CREATE TABLE users (
+		  id bigint NOT NULL,
+		  str varchar(40) DEFAULT 'str'
+		);
+		`,
+	)
+	assertApplyOutput(t, createTable, applyPrefix+createTable)
+	assertApplyOutput(t, createTable, nothingModified)
+
+	createTable = stripHeredoc(`
+		CREATE TABLE users (
+		  id bigint(20) NOT NULL,
+		  str varchar(40) DEFAULT 'str1'
+		);
+		`,
+	)
+	assertApplyOutput(t, createTable, applyPrefix+"ALTER TABLE users CHANGE COLUMN str str varchar(40) DEFAULT 'str1';\n")
+	assertApplyOutput(t, createTable, nothingModified)
+}
+
 func TestMysqldefIndexWithDot(t *testing.T) {
 	resetTestDatabase()
 
