@@ -679,7 +679,9 @@ func TestMysqldefChangeDefaultValue(t *testing.T) {
 	createTable := stripHeredoc(`
 		CREATE TABLE users (
 		  id bigint NOT NULL,
-		  str varchar(40) DEFAULT 'str'
+		  i int DEFAULT 0,
+		  c varchar(10) DEFAULT 'a',
+		  f float DEFAULT 1.1
 		);
 		`,
 	)
@@ -688,12 +690,17 @@ func TestMysqldefChangeDefaultValue(t *testing.T) {
 
 	createTable = stripHeredoc(`
 		CREATE TABLE users (
-		  id bigint(20) NOT NULL,
-		  str varchar(40) DEFAULT 'str1'
+		  id bigint NOT NULL,
+		  i int DEFAULT 1,
+		  c varchar(10) DEFAULT 'c',
+		  f float DEFAULT 0.4
 		);
 		`,
 	)
-	assertApplyOutput(t, createTable, applyPrefix+"ALTER TABLE users CHANGE COLUMN str str varchar(40) DEFAULT 'str1';\n")
+	assertApplyOutput(t, createTable, applyPrefix+
+		"ALTER TABLE users CHANGE COLUMN i i int DEFAULT 1;\n"+
+		"ALTER TABLE users CHANGE COLUMN c c varchar(10) DEFAULT 'c';\n"+
+		"ALTER TABLE users CHANGE COLUMN f f float DEFAULT 0.400000;\n")
 	assertApplyOutput(t, createTable, nothingModified)
 }
 

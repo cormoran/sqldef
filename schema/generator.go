@@ -661,19 +661,6 @@ func haveSameValue(current *Value, desired *Value) bool {
 		return false
 	}
 
-	if current.valueType != desired.valueType {
-		return false
-	}
-	// based on the construction of Value (parseValue function in schema/parser.go)
-	if current.valueType == ValueTypeStr && current.strVal != desired.strVal {
-		return false
-	} else if current.valueType == ValueTypeInt && current.intVal != desired.intVal {
-		return false
-	} else if current.valueType == ValueTypeFloat && current.floatVal != desired.floatVal { // TODO: numerical error
-		return false
-	} else if current.valueType == ValueTypeBit && current.bitVal != desired.bitVal {
-		return false
-	}
 	return bytes.Compare(current.raw, desired.raw) == 0
 
 }
